@@ -14,13 +14,13 @@
       <p>MonthlyIncome:{{data_monin}}</p>
       <br>
       {% if out == 1 %}
-        <p>You <b>will have</b>  chronic Kidney Disease in the future: <b>Positive</b></p>
+        <p>The <b>Employee</b>  will leave the Organization: <b>Positive</b></p>
       {% else %}
-        <p>You <b>will not</b> have  chronic Kidney Disease in the future:<b>Negative</b></p>
+        <p>The <b>Employee</b> will not leave the Organization:<b>Negative</b></p>
 
       {% endif %}
 
-    <a  href="{% url 'ckdApp:ckd' %}">CKD Predicition</a>
+    <a  href="{% url 'ckdApp:ckd' %}">Employee Attrition Prediction</a>
     <br>
 </div>
 {% endblock %}
