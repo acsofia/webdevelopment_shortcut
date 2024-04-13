@@ -11,7 +11,7 @@
       <p>YearsSinceLastPromotion:{{data_yprom}}</p>
       <p>YearsWithCurrManager:{{data_ycman}}</p>
       <p>JobSatisfaction:{{data_jobsat}}</p>
-      <p>MonthlyIncome:{{data_monin}}</p>
+
       <br>
       {% if out == 1 %}
         <p>The <b>Employee</b>  will leave the Organization: <b>Positive</b></p>
@@ -20,7 +20,7 @@
 
       {% endif %}
 
-    <a  href="{% url 'ckdApp:ckd' %}">Employee Attrition Prediction</a>
+    <a  href="{% url 'ckdApp:ckd' %}">CKD Prediction</a>
     <br>
 </div>
 {% endblock %}

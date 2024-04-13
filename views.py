@@ -27,6 +27,7 @@ from django.core.files.storage import FileSystemStorage
 import time
 import pandas as pd
 import numpy as np
+
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.feature_selection import SelectKBest
 #from sklearn.feature_selection import chi2
@@ -61,14 +62,15 @@ class dataUploadView(View):
             data_yprom=request.POST.get('YearsSinceLastPromotion')
             data_ycman=request.POST.get('YearsWithCurrManager')
             data_jobsat=request.POST.get('JobSatisfaction')
-            data_monin=request.POST.get('MonthlyIncome')
+
             #print (data)
             #dataset1=pd.read_csv("prep.csv",index_col=None)
             dicc={'yes':1,'no':0}
             filename = 'finalized_model_ckd.sav'
+            from sklearn.ensemble import RandomForestClassifier
             classifier = pickle.load(open(filename, 'rb'))
 
-            data = np.array([data_ycomp,data_ycurole,data_yprom,data_ycman,data_jobsat,data_monin])
+            data = np.array([data_ycomp,data_ycurole,data_yprom,data_ycman,data_jobsat])
             #sc = StandardScaler()
             #data = sc.fit_transform(data.reshape(-1,1))
             out=classifier.predict(data.reshape(1,-1))
@@ -89,7 +91,7 @@ class dataUploadView(View):
 
 
             return render(request, "succ_msg.html", {'data_ycomp':data_ycomp,'data_ycurole':data_ycurole,'data_yprom':data_yprom,'data_ycman':data_ycman,'data_jobsat':data_jobsat,
-                                                        'data_monin':data_monin,'out':out})
+                                                        'out':out})
 
 
         else:
